@@ -5,7 +5,12 @@
   </a>
   <h3>{{rental.title}}</h3>
   <div class="detail position">
-    <span>Position:</span> {{rental.position}}
+    <span>Position:</span> {{position-type rental.position}}
+            - {{rental.position}}
+
+  </div>
+  <div class="detail fa type">
+    <span>Free Agent Type:</span> {{free-agent-type}}
   </div>
   <div class="detail type">
     <span>Age:</span> {{rental.age}}
