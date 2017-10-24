@@ -5,20 +5,16 @@
   </a>
   <h3>{{rental.title}}</h3>
   <div class="detail position">
-    <span>Position:</span> {{position-type rental.position}}
-            - {{rental.position}}
-
+    <span>Position:</span> {{rental.position}}
   </div>
-  <div class="detail fa type">
-    <span>Free Agent Type:</span> {{free-agent-type}}
-  </div>
-  <div class="detail type">
+  <div class="detail age">
     <span>Age:</span> {{rental.age}}
   </div>
-  <div class="detail location">
-    <span>Strengths:</span> {{rental.strengths}}
+  <div class="detail ratings">
+    <span><ul><li>Shooting: {{rental.shootingrating}}</li>
+          <li> Defending: {{rental.defenderating}}</li>
+          <li> Playmaking: {{rental.playmakerating}}</li>
+          </ul></span> 
   </div>
-  <div class="detail bedrooms">
-    <span>Weaknesses:</span> {{rental.weaknesses}}
-  </div>
+
 </article>

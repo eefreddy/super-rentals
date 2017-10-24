@@ -1,17 +1,17 @@
 export default function() {
   this.namespace = '/api';
 
-  this.get('/rentals', function() {
-    return {
-      data: [{
+  let rentals = [{
         type: 'rentals',
         id: 'lbj',
         attributes: {
           title: 'Lebron James',
           position: 'Small Forward',
-          strengths: 'Playmaking, Finishing at the Rim, everything but three point shooting and free throws ',
-          weaknesses: 'Free throws, three point shooting',
           age: 32,
+          star: true,
+          defenderating: 10,
+          playmakerating: 10,
+          shootingrating: '9',
           image: 'https://upload.wikimedia.org/wikipedia/commons/0/09/LeBron_James.jpg',
           description: 'Turns teams into Championship contenders overnight'
         }
@@ -21,9 +21,11 @@ export default function() {
         attributes: {
           title: 'Paul George',
           position: 'Small Forward',
-          strengths: 'Good offensive game, special on defense',
-          weaknesses: 'Blames teams for team failures',
           age: 27,
+          star: true,
+          defenderating: 9,
+          playmakerating: 5,
+          shootingrating: '7',
           image: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Paul_George_Pacers.jpg',
           description: 'Good secondary piece, hope he stays with OKC'
         }
@@ -33,14 +35,25 @@ export default function() {
         attributes: {
           title: 'Chris Paul',
           position: 'Point Guard',
-          strengths: 'Playmaking, Point GOD, Good offensive game, good on defense',
-          weaknesses: 'Doesnt like people touching his head',
           age: 31,
+          star: true,
+          defenderating: 8,
+          playmakerating: 9,
+          shootingrating: '8',
           image: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Chris_Paul_%2831585840292%29.jpg',
           description: 'Injury prone at this stage, frankly kinda bossy'
         }
-      }]
-    };
+      }];
+
+  this.get('/rentals', function(db, request) {
+    if(request.queryParams.shootingrating !== undefined) {
+      let filteredRentals = rentals.filter(function(i) {
+        return i.attributes.shootingrating.indexOf(request.queryParams.shootingrating) !== -1;
+      });
+      return { data: filteredRentals };
+    } else {
+      return { data: rentals };
+    }
   });
 }
 
